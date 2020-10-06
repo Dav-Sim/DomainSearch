@@ -3,7 +3,7 @@
 
 The application is used to search for whois information about Internet domains. Especially for an approximate determination of whether the domain is free to register.
 
-![Image of app main window](https://github.com/Dave4626/DomainSearch/blob/main/appImage.JPG?raw=true "DomainSearch app main window")
+![Image of app main window](https://github.com/Dave4626/DomainSearch/blob/main/appImage.JPG?raw=true&s=450 "DomainSearch app main window")
 
 ### how to use
 - In the top window, you can specify several "second-level domain (SLD) names" separated by a space for which you want to search for "whois" information.
