@@ -1,0 +1,25 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainSearch", "DomainSearch\DomainSearch.csproj", "{0CBCC083-4964-41B1-B633-0E27AEB67024}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0CBCC083-4964-41B1-B633-0E27AEB67024}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CBCC083-4964-41B1-B633-0E27AEB67024}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CBCC083-4964-41B1-B633-0E27AEB67024}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CBCC083-4964-41B1-B633-0E27AEB67024}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {567D1B57-4F26-4076-86CB-33AC1DD40F2C}
+	EndGlobalSection
+EndGlobal
