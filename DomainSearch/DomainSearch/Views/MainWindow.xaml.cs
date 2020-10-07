@@ -26,18 +26,17 @@ namespace DomainSearch.Views
         /// <summary>
         /// main viev model
         /// </summary>
-        MainVM _Model;
+        private readonly MainVM _Model;
         /// <summary>
         /// Searcher class for getting whois infos 
         /// </summary>
-        Searcher _Searcher;
+        private readonly Searcher _Searcher;
         public MainWindow()
         {
             InitializeComponent();
             _Model = this.DataContext as MainVM;
             _Searcher = new Searcher();
         }
-
 
         private void CommandStart_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -59,7 +58,7 @@ namespace DomainSearch.Views
             _Model.Sites.Clear();
             try
             {
-                await _Searcher.Search(_Model.Domains, _Model.Inputs, progress);
+                await _Searcher.SearchAsync(_Model.Domains, _Model.Inputs, progress);
             }
             catch (Exception ex) when (ex is OperationCanceledException || ex is ObjectDisposedException)
             {
@@ -78,11 +77,14 @@ namespace DomainSearch.Views
             }
         }
 
-        private void Progress_ProgressChanged(object sender, ReportProgress e)
+        private async void Progress_ProgressChanged(object sender, ReportProgress e)
         {
             if (!Dispatcher.CheckAccess())
             {
-                Dispatcher.BeginInvoke((Action)(() => { UpdateProgress(e.Percent, e.Progress, e.SiteReady); }));
+                await Dispatcher.BeginInvoke((Action)(() =>
+                {
+                    UpdateProgress(e.Percent, e.Progress, e.SiteReady);
+                }));
             }
             else
             {
@@ -192,6 +194,26 @@ namespace DomainSearch.Views
                 {
                     System.IO.File.WriteAllText(dialog.FileName, sb.ToString());
                 }
+            }
+        }
+
+        private void CommandPauseResume_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if (_Model?.Working == true)
+            {
+                e.CanExecute = true;
+            }
+            else
+            {
+                e.CanExecute = false;
+            }
+        }
+
+        private void CommandPauseResume_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (_Model != null && _Searcher != null)
+            {
+                _Model.Paused = _Searcher.PauseResume();
             }
         }
     }

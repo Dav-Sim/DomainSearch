@@ -20,7 +20,7 @@ namespace DomainSearch.Converters
             Brush cFalse = Brushes.Tomato;
             Brush cTrue = Brushes.GreenYellow;
 
-            if (parameter!= null && parameter.ToString().Contains("|"))
+            if (parameter != null && parameter.ToString().Contains("|"))
             {
                 try
                 {

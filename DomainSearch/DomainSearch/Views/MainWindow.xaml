@@ -19,6 +19,7 @@
     <Window.CommandBindings>
         <CommandBinding x:Name="CommandStart" Command="cmd:MainCommands.StartCommand" CanExecute="CommandStart_CanExecute" Executed="CommandStart_Executed" />
         <CommandBinding x:Name="CommandStop" Command="cmd:MainCommands.StopCommand" CanExecute="CommandStop_CanExecute" Executed="CommandStop_Executed" />
+        <CommandBinding x:Name="CommandPauseResume" Command="cmd:MainCommands.PauseResumeCommand" CanExecute="CommandPauseResume_CanExecute" Executed="CommandPauseResume_Executed" />
         <CommandBinding x:Name="CommandCopy" Command="ApplicationCommands.Copy" CanExecute="CommandCopy_CanExecute" Executed="CommandCopy_Executed"/>
         <CommandBinding x:Name="CommandDelete" Command="ApplicationCommands.Delete" CanExecute="CommandDelete_CanExecute" Executed="CommandDelete_Executed"/>
         <CommandBinding x:Name="CommandSave" Command="ApplicationCommands.Save" CanExecute="CommandSave_CanExecute" Executed="CommandSave_Executed"/>
@@ -133,6 +134,20 @@
             </DockPanel>
             <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="butSearch" Content="Search" Width="100" Height="26" Margin="5" Style="{StaticResource RoundButton}" Command="cmd:MainCommands.StartCommand" ToolTip="Start search"/>
+                <Button x:Name="butPause" Width="100" Height="26" Margin="5" Command="cmd:MainCommands.PauseResumeCommand" ToolTip="Pause / resume search">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource RoundButton}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Paused}" Value="True">
+                                    <Setter Property="Content" Value="Resume"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Paused}" Value="False">
+                                    <Setter Property="Content" Value="Pause"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
                 <Button x:Name="butStop" Content="Stop" Width="100" Height="26" Margin="5" Style="{StaticResource RoundButton}" Command="cmd:MainCommands.StopCommand" ToolTip="Stop search"/>
             </StackPanel>
         </Grid>

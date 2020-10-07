@@ -19,6 +19,7 @@ namespace DomainSearch.ViewModels
         private int percent = 0;
         private string progress = "0%";
         private bool working = false;
+        private bool paused = false;
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
@@ -71,6 +72,12 @@ namespace DomainSearch.ViewModels
         {
             get { return working; }
             set { working = value; Notify(nameof(Working)); CommandManager.InvalidateRequerySuggested(); }
+        }
+
+        public bool Paused
+        {
+            get { return paused; }
+            set { paused = value; Notify(nameof(Paused)); }
         }
 
         private void ChangeInputs(string value)

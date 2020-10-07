@@ -14,5 +14,6 @@ namespace DomainSearch.Commands
     {
         public static RoutedUICommand StartCommand = new RoutedUICommand("Start", nameof(StartCommand), typeof(MainCommands));
         public static RoutedUICommand StopCommand = new RoutedUICommand("Stop", nameof(StopCommand), typeof(MainCommands));
+        public static RoutedUICommand PauseResumeCommand = new RoutedUICommand("PauseResume", nameof(PauseResumeCommand), typeof(MainCommands));
     }
 }
